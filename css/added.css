@@ -2,10 +2,13 @@
 .know-more {
     border: 1px solid #ddd;
     color: #ddd;
+    border-radius: 0;
 }
 .know-more:hover {
-    border-color: #2259f2;
-    color: #2259f2;
+    border-color: #fff;
+    color: #000;
+    background: #fff;
+    border-radius: 0;
 }
 #about-us {
     padding: 25px;
@@ -27,7 +30,16 @@
 
 
 .register-now {
-    border: 1px solid ;
+    border: 1px solid #222 ;
+    background-color: #222;
+    color: #fff;
+    border-radius: 0;
+
+}
+.register-now:hover {
+    border: 1px solid #000 ;
+    background-color: #fff;
+    color: #000;
     border-radius: 0;
 
 }
