@@ -1,0 +1,50 @@
+
+.know-more {
+    border: 1px solid #ddd;
+    color: #ddd;
+}
+.know-more:hover {
+    border-color: #2259f2;
+    color: #2259f2;
+}
+#about-us {
+    padding: 25px;
+    margin: 20px;
+}
+.departments-heading {
+    padding: 15px;
+    margin: 10px;
+}
+.list-item{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 25px;
+}
+.list-item:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 25px;
+    background: #f2f2f2;
+}
+
+
+.register-now {
+    border: 1px solid ;
+    border-radius: 0;
+
+}
+
+#contact {
+    padding: 50px;
+}
+.contact-us-row {
+    padding: 15px;
+}
+.contact-icon {
+    padding: 20px;
+    font-size: 50px
+}
+.projects-details{
+    padding:20px;
+    margin: 20px;
+    
+    
+}
