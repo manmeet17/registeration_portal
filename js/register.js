@@ -1,82 +1,89 @@
+$('.form').find('input, textarea').on('keyup blur focus', function (e) {
+  
+    var $this = $(this),
+        label = $this.prev('label');
+  
+        if (e.type === 'keyup') {
+              if ($this.val() === '') {
+            label.removeClass('active highlight');
+          } else {
+            label.addClass('active highlight');
+          }
+      } else if (e.type === 'blur') {
+          if( $this.val() === '' ) {
+              label.removeClass('active highlight'); 
+              } else {
+              label.removeClass('highlight');   
+              }   
+      } else if (e.type === 'focus') {
+        
+        if( $this.val() === '' ) {
+              label.removeClass('highlight'); 
+              } 
+        else if( $this.val() !== '' ) {
+              label.addClass('highlight');
+              }
+      }
+  
+  });
+  
+function validate(con,callback){
+    var fields={
+            name: $('input[name=fname]').val(),
+            email: $('input[name=email]').val(),
+            room: $('input[name=room').val(),
+            regNo: $('input[name=regNo]').val(),
+            mobile: $('input[name=mobile]').val(),
+            github: $('input[name=github]').val(),
+            linkedin: $('input[name=linkedin]').val(),
+            skills: $('input[name=skills]').val()
+            }
+            console.log(name,email,room,regNo);
+    if( name.length==0 || email.length==0 || room.length==0 || regNo.length==0){
+        swal({
+            title: "Failed",
+            text: "Make sure you have filled all the required fields",
+            icon: "error"
+        })
+    }
+    else{
+        console.log("Called");
+        con=true;
+        callback();
+    }
+}
 
-//jQuery time
-var current_fs, next_fs, previous_fs; //fieldsets
-var left, opacity, scale; //fieldset properties which we will animate
-var animating; //flag to prevent quick multi-click glitches
-
-$(".next").click(function(){
-    if(animating) return false;
-    animating = true;
-
-    current_fs = $(this).parent();
-    next_fs = $(this).parent().next();
-
-    //activate next step on progressbar using the index of next_fs
-    $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
-
-    //show the next fieldset
-    next_fs.show();
-    //hide the current fieldset with style
-    current_fs.animate({opacity: 0}, {
-        step: function(now, mx) {
-            //as the opacity of current_fs reduces to 0 - stored in "now"
-            //1. scale current_fs down to 80%
-            scale = 1 - (1 - now) * 0.2;
-            //2. bring next_fs from the right(50%)
-            left = (now * 50)+"%";
-            //3. increase opacity of next_fs to 1 as it moves in
-            opacity = 1 - now;
-            current_fs.css({
-                'transform': 'scale('+scale+')',
-                'position': 'absolute'
+function request(){
+    $.ajax({
+        url: 'https://hackoverflow-api.herokuapp.com/new-student',
+        type: 'POST',
+        dataType: 'json',
+        contentType: 'application/json',
+        data: JSON.stringify({
+            name: $('input[name=fname]').val(),
+            email: $('input[name=email]').val(),
+            room: $('input[name=room').val(),
+            regNo: $('input[name=regNo]').val(),
+            mobile: $('input[name=mobile]').val(),
+            github: $('input[name=github]').val(),
+            linkedin: $('input[name=linkedin]').val(),
+            skills: $('input[name=skills]').val()
+        }),
+        success: function(res){
+            swal({
+                title: "Success",
+                text: "You have registered for hackoverflow",
+                icon: "success"
+            }).then((res) =>{
+                window.location.href="/";
+                // window.location.href="/";
             });
-            next_fs.css({'left': left, 'opacity': opacity});
-        },
-        duration: 800,
-        complete: function(){
-            current_fs.hide();
-            animating = false;
-        },
-        //this comes from the custom easing plugin
-        easing: 'easeInOutBack'
+        }
     });
+}
+
+
+$('button').on('click', function(e){
+    e.preventDefault();
+    request();
 });
-
-$(".previous").click(function(){
-    if(animating) return false;
-    animating = true;
-
-    current_fs = $(this).parent();
-    previous_fs = $(this).parent().prev();
-
-    //de-activate current step on progressbar
-    $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
-
-    //show the previous fieldset
-    previous_fs.show();
-    //hide the current fieldset with style
-    current_fs.animate({opacity: 0}, {
-        step: function(now, mx) {
-            //as the opacity of current_fs reduces to 0 - stored in "now"
-            //1. scale previous_fs from 80% to 100%
-            scale = 0.8 + (1 - now) * 0.2;
-            //2. take current_fs to the right(50%) - from 0%
-            left = ((1-now) * 50)+"%";
-            //3. increase opacity of previous_fs to 1 as it moves in
-            opacity = 1 - now;
-            current_fs.css({'left': left});
-            previous_fs.css({'transform': 'scale('+scale+')', 'opacity': opacity});
-        },
-        duration: 800,
-        complete: function(){
-            current_fs.hide();
-            animating = false;
-        },
-        //this comes from the custom easing plugin
-        easing: 'easeInOutBack'
-    });
-});
-
-$(".submit").click(function(){
-    return false;
-})
