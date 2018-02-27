@@ -26,28 +26,25 @@ $('.form').find('input, textarea').on('keyup blur focus', function (e) {
       }
   
   });
-  
+
 function validate(con,callback){
-    var fields={
-            name: $('input[name=fname]').val(),
-            email: $('input[name=email]').val(),
-            room: $('input[name=room').val(),
-            regNo: $('input[name=regNo]').val(),
-            mobile: $('input[name=mobile]').val(),
-            github: $('input[name=github]').val(),
-            linkedin: $('input[name=linkedin]').val(),
-            skills: $('input[name=skills]').val()
-            }
-            console.log(name,email,room,regNo);
-    if( name.length==0 || email.length==0 || room.length==0 || regNo.length==0){
+    var name = $('input[name=fname]');
+    var email= $('input[name=email]');
+    var room= $('input[name=room');
+    var regNo = $('input[name=regNo]');
+    var mobile = $('input[name=mobile]');
+    var github = $('input[name=github]');
+    var linkedin= $('input[name=linkedin]');
+    var skills= $('input[name=skills]');
+    if(name.val().length==0 || email.val().length==0 || mobile.val().length!=10 || room.val().length==0 || regNo.val().length!=9 || skills.val().length==0 ){
         swal({
             title: "Failed",
-            text: "Make sure you have filled all the required fields",
+            text: "Make sure you have filled all the fields correctly",
             icon: "error"
         })
     }
     else{
-        console.log("Called");
+        // console.log("Called");
         con=true;
         callback();
     }
@@ -83,7 +80,7 @@ function request(){
 }
 
 
-$('button').on('click', function(e){
+$('form').submit(function(e){
     e.preventDefault();
-    request();
+    validate(true,request);
 });

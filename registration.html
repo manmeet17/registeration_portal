@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="author" content="Abhinav Gupta, Manmeet Tarun, Navdeep">
+    <meta name="author" content="Manmeet Tarun">
     <title>HackOverflow</title>
     <link rel="stylesheet" href="ionicons/css/ionicons.min.css">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
@@ -16,40 +16,40 @@
             <div id="signup">   
                 <h1>Sign Up for the Hack</h1>
                 <p style="color: white;"><span class="req">*</span> - Required Field</p>
-                <form>
+                <form name="reg">
                     <div class="field-wrap">
                         <label>
                           Name<span class="req">*</span>
                         </label>
-                        <input name="fname" type="text" required autocomplete="off" />
+                        <input name="fname" type="text"  autocomplete="off" />
                     </div>
                   
                       <div class="field-wrap">
                         <label>
                           Registration Number<span class="req">*</span>
                         </label>
-                        <input type="text" name="regNo" required autocomplete="off"/>
+                        <input type="text" name="regNo"  autocomplete="off"/>
                       </div>
           
                     <div class="field-wrap">
                       <label>
                         Email Address<span class="req">*</span>
                       </label>
-                      <input type="email" name="email" required autocomplete="off"/>
+                      <input type="email" name="email"  autocomplete="off"/>
                     </div>
                     
                     <div class="field-wrap">
                       <label>
                         Mobile Number<span class="req">*</span>
                       </label>
-                      <input type="text" name="mobile" required autocomplete="off"/>
+                      <input type="number" name="mobile"  autocomplete="off"/>
                     </div>
                     
                     <div class="field-wrap">
                             <label>
                               Room Number<span class="req">*</span>
                             </label>
-                            <input type="text" name="room" required autocomplete="off"/>
+                            <input type="text" name="room"  autocomplete="off"/>
                     </div>
 
                     <div class="field-wrap">
@@ -70,7 +70,7 @@
                             <label>
                               Skills <span class="req">*</span>
                             </label>
-                            <input type="text" name="skills" autocomplete="off"/>
+                            <input type="text" name="skills" autocomplete="off" />
                     </div>
                     
                     <button type="submit" class="button button-block"/>Register</button>
@@ -81,6 +81,7 @@
 
 
 <script src="js/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="js/register.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
