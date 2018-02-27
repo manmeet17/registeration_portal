@@ -75,7 +75,7 @@ function request(){
                 text: "You have registered for hackoverflow",
                 icon: "success"
             }).then((res) =>{
-                window.location.href="/";
+                window.location.href="./index.html";
                 // window.location.href="/";
             });
         }
