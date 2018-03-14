@@ -38,7 +38,7 @@ function validate(con,callback){
     linkedin: $('input[name=linkedin]').val(),
     skills: $('input[name=skills]').val(),
     };
-    console.log(fields);
+    // console.log(fields);
     if( fields.name.length==0 || fields.email.length==0 || fields.mobile.length!=10 || fields.room.length==0 || fields.regNo.length!=9 || fields.skills.length==0 ){
         swal({
             title: "Failed",
@@ -61,7 +61,7 @@ function request(fields){
         contentType: 'application/json',
         data: JSON.stringify(fields),
         success: function(res){
-            console.log(res);
+            // console.log(res);
             if(res.status==200){
                 swal({
                     title: "Success",
