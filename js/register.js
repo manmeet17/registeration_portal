@@ -75,7 +75,7 @@ function request(fields){
             else{
                 swal({
                     title: "Failed",
-                    text: fields.name+"has already registered for Hackoverflow",
+                    text: fields.name+" has already registered for Hackoverflow",
                     icon: "error"
                 })
             }
